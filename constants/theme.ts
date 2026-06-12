@@ -3,29 +3,31 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = '#0a7ea4'
+const tintColorDark = '#fff'
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    primary: '#49129c',
+    secondary: '#b40086',
+    tertiary: '#ef2967',
+    success: '#52d49b',
+
+    text: '#000000',
+    background: '#f5f5f5'
   },
   dark: {
+    primary: '#7a4edc',
+    secondary: '#d138a8',
+    tertiary: '#ff527f',
+    success: '#3a9d78',
+
     text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
-};
+    background: '#17202A'
+  }
+}
 
 export const Fonts = Platform.select({
   ios: {
@@ -36,18 +38,19 @@ export const Fonts = Platform.select({
     /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
     /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+    mono: 'ui-monospace'
   },
   default: {
     sans: 'normal',
     serif: 'serif',
     rounded: 'normal',
-    mono: 'monospace',
+    mono: 'monospace'
   },
   web: {
     sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
     serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-  },
-});
+    rounded:
+      "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
+    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+  }
+})
