@@ -4,24 +4,48 @@ import {
   DefaultTheme,
   ThemeProvider
 } from '@react-navigation/native'
-import { Text, View } from 'react-native'
+
+import { useThemeColor } from '@/hooks/use-theme-color'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import 'react-native-reanimated'
 import '../global.css'
 
-export const unstable_settings = {
-  anchor: '(tabs)'
-}
+import { allRoutes } from '@/constants/Routes'
+import { Stack } from 'expo-router'
 
 export default function RootLayout() {
+  const backgroundColor = useThemeColor({}, 'background')
   const colorScheme = useColorScheme()
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <View className="bg-light-background dark:bg-background flex-1 justify-center items-center">
-        <Text className="mt-10 text-3xl text-light-text dark:text-dark-text font-bold">
-          Hello World
-        </Text>
-      </View>
-    </ThemeProvider>
+    <GestureHandlerRootView
+      style={{ backgroundColor: backgroundColor, flex: 1 }}
+    >
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack
+          screenOptions={{
+            headerShadowVisible: false,
+            contentStyle: {
+              backgroundColor: backgroundColor
+            },
+            headerStyle: {
+              backgroundColor: backgroundColor
+            }
+          }}
+        >
+          <Stack.Screen name="index" options={{ title: '' }} />
+
+          {allRoutes.map((route) => (
+            <Stack.Screen
+              key={route.name}
+              name={route.name}
+              options={{
+                title: route.title
+              }}
+            />
+          ))}
+        </Stack>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   )
 }
