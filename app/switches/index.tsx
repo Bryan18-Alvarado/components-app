@@ -1,6 +1,6 @@
+import ThemedCard from '@/presentation/shared/ThemedCard'
 import ThemedSwitch from '@/presentation/shared/ThemedSwitch'
 import ThemedView from '@/presentation/shared/ThemedView'
-import ThemedCard from '@/presentation/ThemedCard'
 import { useState } from 'react'
 
 const Switches = () => {

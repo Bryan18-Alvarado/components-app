@@ -29,9 +29,11 @@ const createThreeButtonAlert = () =>
 const AlertsScreen = () => {
   return (
     <ThemedView margin>
-      <ThemedButton onPress={createTwoButtonAlert}>2-Button Alert</ThemedButton>
+      <ThemedButton className="my-5" onPress={createTwoButtonAlert}>
+        2-Button Alert
+      </ThemedButton>
 
-      <ThemedButton onPress={createThreeButtonAlert}>
+      <ThemedButton className="mb-5" onPress={createThreeButtonAlert}>
         3-Button Alert
       </ThemedButton>
     </ThemedView>
