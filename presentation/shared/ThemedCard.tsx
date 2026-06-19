@@ -7,7 +7,7 @@ interface Props extends ViewProps {
 const ThemedCard = ({ className, children }: Props) => {
   return (
     <View
-      className={`bg-white dark:bg-black/10 rounded-xl p-2 shadow shadow-black/5 ${className}`}
+      className={`bg-white dark:bg-black/10 rounded-xl p-2 shadow mb-5 shadow-black/5 ${className}`}
     >
       {children}
     </View>

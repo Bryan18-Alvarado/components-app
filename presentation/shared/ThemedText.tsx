@@ -18,15 +18,11 @@ const ThemedText = ({ className, type = 'normal', ...rest }: Props) => {
       className={[
         'text-light-text dark:text-dark-text',
 
-        //clases inyectadas segun type
-
         type === 'normal' ? 'font-normal' : undefined,
         type === 'h1' ? 'text-3xl' : undefined,
         type === 'h2' ? 'text-xl' : undefined,
         type === 'semi-bold' ? 'font-semibold' : undefined,
         type === 'link' ? 'font-normal underline' : undefined,
-
-        // calcular clase extra ejp margenes
 
         className
       ].join(' ')}
