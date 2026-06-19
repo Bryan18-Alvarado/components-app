@@ -1,6 +1,6 @@
 import { useThemeColor } from '@/hooks/use-theme-color'
 import React from 'react'
-import { Text, View, ViewProps } from 'react-native'
+import { View, ViewProps } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 interface Props extends ViewProps {
@@ -36,7 +36,7 @@ const ThemedView = ({
       ]}
       className={className}
     >
-      <Text>{children}</Text>
+      {children}
     </View>
   )
 }
