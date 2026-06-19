@@ -1,35 +1,17 @@
-import { useRef } from 'react'
-import { Animated, Easing } from 'react-native'
-
+import { useAnimation } from '@/hooks/useAnimation'
 import ThemedButton from '@/presentation/shared/ThemedButton'
 import ThemedView from '@/presentation/shared/ThemedView'
+import { Animated, Easing } from 'react-native'
 
 const Animation101Screen = () => {
-  const animatedOpacity = useRef(new Animated.Value(0)).current
-  const animatedTop = useRef(new Animated.Value(-100)).current
-
-  const fadeIn = () => {
-    Animated.timing(animatedOpacity, {
-      toValue: 1,
-      duration: 300,
-      useNativeDriver: true
-    }).start()
-
-    Animated.timing(animatedTop, {
-      toValue: 0,
-      duration: 700,
-      useNativeDriver: true,
-      easing: Easing.bounce
-    }).start()
-  }
-
-  const fadeOut = () => {
-    Animated.timing(animatedOpacity, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: true
-    }).start(() => animatedTop.resetAnimation())
-  }
+  // 2. Desestructuramos todo de nuestro hook, ¡qué limpio!
+  const {
+    animatedOpacity,
+    animatedTop,
+    fadeIn,
+    fadeOut,
+    startMovingTopPosition
+  } = useAnimation()
 
   return (
     <ThemedView margin className="justify-center items-center flex-1">
@@ -47,11 +29,26 @@ const Animation101Screen = () => {
         }}
       />
 
-      <ThemedButton className="my-5" onPress={fadeIn}>
+      <ThemedButton
+        className="my-5"
+        onPress={() => {
+          // 3. Aparecemos con valores por defecto
+          fadeIn({})
+          // 4. Movemos la caja indicándole a dónde ir y qué curva usar
+          startMovingTopPosition({
+            toValue: 0, // Posición de descanso
+            easing: Easing.bounce, // El famoso rebote
+            duration: 700
+          })
+        }}
+      >
         Fade In
       </ThemedButton>
 
-      <ThemedButton className="my-5" onPress={fadeOut}>
+      <ThemedButton
+        className="my-5"
+        onPress={() => fadeOut({})} // Desaparecemos con valores por defecto
+      >
         FadeOut
       </ThemedButton>
     </ThemedView>
